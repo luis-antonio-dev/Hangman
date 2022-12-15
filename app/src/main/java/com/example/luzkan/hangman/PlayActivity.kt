@@ -41,7 +41,7 @@ class PlayActivity : AppCompatActivity() {
                     correctGuesses.add(pGuess)
                     refactorSecret()
 
-                    Toast.makeText(applicationContext,"Good guess!",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"Acertou!",Toast.LENGTH_SHORT).show()
                     checkWin()
                     return
                 }
@@ -107,13 +107,13 @@ class PlayActivity : AppCompatActivity() {
     private fun winDialogPopUp(won: Boolean) {
         val builder = AlertDialog.Builder(this@PlayActivity)
         if(won) {
-            builder.setTitle("Congratulations!")
+            builder.setTitle("Parabens!")
         }else{
-            builder.setTitle("Boo! You hanged a man!")
+            builder.setTitle("Você perdeu!")
         }
-        builder.setMessage("Do you want to play again?")
+        builder.setMessage("Você quer jogar de novo?")
 
-        builder.setPositiveButton("Let's go"){ _, _ ->
+        builder.setPositiveButton("Sim"){ _, _ ->
 
             // This one below is in main view more readable
             secretWord = resources.getStringArray(R.array.guessWords)[Random().nextInt(resources.getStringArray(R.array.guessWords).size-0)+0]
@@ -122,7 +122,7 @@ class PlayActivity : AppCompatActivity() {
             Toast.makeText(applicationContext,"New game started!",Toast.LENGTH_SHORT).show()
 
         }
-        builder.setNegativeButton("No"){ _, _ ->
+        builder.setNegativeButton("Não"){ _, _ ->
             finish()
         }
         val dialog: AlertDialog = builder.create()
